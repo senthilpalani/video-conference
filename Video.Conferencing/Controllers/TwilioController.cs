@@ -20,10 +20,13 @@ namespace Video.Conferencing.Controllers
         }
 
         [HttpGet]
-        public ActionResult Get(string identity)
+        public ActionResult Get(string identity, string roomName)
         {
             // Create an Chat grant for this token
-            var grant = new VideoGrant();
+            var grant = new VideoGrant
+            {
+                Room = roomName
+            };
             var grants = new HashSet<IGrant> { { grant } };
 
             // Create an Access Token generator
